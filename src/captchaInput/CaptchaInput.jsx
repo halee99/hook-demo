@@ -2,11 +2,25 @@ import React, {useEffect, useState} from "react"
 import "./captchaInput.css";
 
 function CaptchaInput ({ onChange, initCaptcha }){
-
+  // activeIndex 正要输入的 输入框的 下标索引
   const [activeIndex, setActiveIndex] = useState(0)
+  // captcha 多个输入框的值数组
   const [captcha, setCaptcha] = useState(initCaptcha)
   const [inputEl, setInputEl] = useState(null)
   const [begin, setBegin] = useState(false)
+
+  useEffect(() => {
+    // 开始输入时，光标聚焦当前 inputEl
+    if (begin) {
+      inputEl && inputEl.focus()
+    }
+  }, [inputEl, begin])
+
+  useEffect(() => {
+    // 当多输入框的值数组发生变化
+    // 把它们组成值传给父组件
+    onChange(captcha.join(''))
+  }, [captcha, onChange])
 
   // 监听按键事件，主要是实现了退格的时候删除一位验证码
   const inputKeyDown = (event, index) => {
@@ -16,12 +30,6 @@ function CaptchaInput ({ onChange, initCaptcha }){
       backSpace(index)
     }
   }
-
-  useEffect(() => {
-    if (begin) {
-      inputEl && inputEl.focus()
-    }
-  }, [inputEl, begin])
 
   // 删除键
   const backSpace = index => {
@@ -78,10 +86,9 @@ function CaptchaInput ({ onChange, initCaptcha }){
       return
     }
     arr[index] = value
-    // 夫组件拿到值
-    onChange(arr.join(''))
 
     if (index === arr.length - 1 && arr[index] !== '') {
+      // 所以的值输入好了，光标标消失
       inputBlur()
     }
     setCaptcha(arr)
