@@ -1,0 +1,22 @@
+.captcha-input-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.captcha-input-item {
+    width: 50px;
+    height: 60px;
+
+    padding: 0;
+    border: 1px solid #e1e3e6;
+    border-radius: 2px;
+    text-align: center;
+    outline: 0;
+}
+.captcha-input-item[disabled] {
+    background: #fff;
+}
+.captcha-input-item:focus {
+    border: 1px solid #337eff;
+}

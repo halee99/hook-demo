@@ -5,6 +5,7 @@ import Demo2 from "./hook/demo2"
 import Demo3 from "./hook/demo3"
 import Demo4 from "./hook/demo4"
 import Demo5 from "./hook/demo5"
+import Demo6 from "./captchaInput/demo6"
 
 import {log} from "./utils"
 
@@ -19,10 +20,10 @@ function App() {
       <button onClick={() => setOpenDemo1(!openDemo1)}>打开例子 1</button>
       {/*{demo}*/}
       {/*<Demo2/>*/}
-      <Demo3/>
+      {/*<Demo3/>*/}
       {/*<Demo4/>*/}
       {/*<Demo5/>*/}
-
+      <Demo6/>
     </div>
   )
 }

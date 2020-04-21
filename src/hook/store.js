@@ -2,9 +2,9 @@
 
 // defaultState 初始化仓库
 const defaultState = {
-  name: 'lijuan',
+  name: 'li',
   age: 16,
-  sex: 'woman',
+  sex: 'man',
   money: 10000,
   status: '吃',
   thing: ['烤箱']
