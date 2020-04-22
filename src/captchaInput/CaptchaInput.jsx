@@ -59,15 +59,22 @@ const CaptchaInput = ({ onChange, initCaptcha }) => {
       return
     }
 
-    setCaptchaByIndex(index, value)
-
     // 如果是最后一位
     if (index === captcha.length - 1) {
+      setCaptchaByIndex(index, value)
       return
     }
 
+    // 不是最后一位
+    let next = index + 1
+    if (captcha[index] === '') {
+      setCaptchaByIndex(index, value)
+    } else {
+      setCaptchaByIndex(next, value)
+    }
+
     // 光标下移一位
-    setActiveIndex(index + 1)
+    setActiveIndex(next)
   };
 
   const setCaptchaByIndex = (index, value) => {
