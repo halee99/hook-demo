@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import "./captchaInput.css";
 
-function CaptchaInput ({ onChange, initCaptcha }){
+const CaptchaInput = ({ onChange, initCaptcha }) => {
   // activeIndex 正要输入的 输入框的 下标索引
   const [activeIndex, setActiveIndex] = useState(0)
   // captcha 多个输入框的值数组
@@ -59,25 +59,15 @@ function CaptchaInput ({ onChange, initCaptcha }){
       return
     }
 
-    let isLast = index === captcha.length - 1
+    setCaptchaByIndex(index, value)
+
     // 如果是最后一位
-    if (isLast) {
-      if (captcha[index] === '') {
-        setCaptchaByIndex(index, value)
-      }
+    if (index === captcha.length - 1) {
       return
     }
 
-    // 不是最后一位
-    let next = index + 1
-    if (captcha[index] === '') {
-      setCaptchaByIndex(index, value)
-    } else {
-      setCaptchaByIndex(next, value)
-    }
-
     // 光标下移一位
-    setActiveIndex(next)
+    setActiveIndex(index + 1)
   };
 
   const setCaptchaByIndex = (index, value) => {
